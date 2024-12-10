@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Sign Up</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <!-- this is when you want to log in -->
+<script>
+    function saveCredentials() {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (email && password) {
+            document.cookie = `email=${email}; path=/`;
+            document.cookie = `password=${password}; path=/`;
+            alert("Account created successfully!");
+            window.location.href = "Sign-in.html";
+        } else {
+            alert("Please fill in all fields.");
+        }
+    }
+</script>
+</head>
+<body>
+    <main>
+<form onsubmit="saveCredentials(); return false;">
+    <fieldset>
+        <legend>Sign Up</legend>
+        <label for="email">Email:</label><br />
+        <input type="text" id="email" placeholder="example@gmail.com" required /><br />
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" placeholder="Enter Password" required /><br />
+        <input type="submit" value="Sign Up" />
+    </fieldset>
+</form>
+</main>
+</body>
+</html>

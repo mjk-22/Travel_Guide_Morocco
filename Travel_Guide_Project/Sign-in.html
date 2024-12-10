@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Sign-in</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <!-- this is for when you sign in for the first time -->
+  
+    <script>
+        function signIn() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Retrieve cookies
+            const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
+                const [key, value] = cookie.split("=");
+                acc[key] = value;
+                return acc;
+            }, {});
+
+            // Validate credentials
+            if (cookies.email === email && cookies.password === password) {
+                alert("Sign-in successful!");
+                window.location.href = "overview.html";
+            } else {
+                alert("Invalid email or password.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+<main>
+    <form onsubmit="signIn(); return false;">
+        <fieldset>
+            <legend>Sign In</legend>
+            <label for="email">Email:</label><br />
+            <input type="text" id="email" placeholder="example@gmail.com" required /><br />
+            <label for="password">Password:</label><br />
+            <input type="password" id="password" placeholder="Enter Password" required /><br />
+            <input type="submit" value="Sign In" />
+        </fieldset>
+    </form>
+</main>
+</body>
+</html>
